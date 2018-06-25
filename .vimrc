@@ -8,9 +8,10 @@ call vundle#begin()
 
 " put plugins here...
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'rust-lang/rust.vim'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'rust-lang/rust.vim'
+Plugin 'noah/vim256-color'
 Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
@@ -51,8 +52,23 @@ set autoread
 set hi=5000
 set tags=./tags;/
 
-colorscheme elflord
+set t_Co=256
+"colorscheme elflord
+colorscheme jellybeans
+set cursorline
 
-set ts=4
-set sw=4
-set autoindent
+set nu
+set ts=2
+set sw=2
+set backspace=2
+set softtabstop=2
+"set smartindent
+"set cindent
+"set cinoptions=g0:0t0c2C1(0f0l1
+set expandtab
+
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>t :YcmCompleter GetType<CR>
+nnoremap <leader>d :YcmCompleter GetDoc<CR>

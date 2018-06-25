@@ -1,0 +1,92 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+#order += "ipv6"
+#order += "hamster"
+#order += "apt_updates"
+#order += "coin_market"
+order += "external_script"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "disk /"
+order += "disk /home"
+order += "cpu_usage"
+order += "load"
+order += "battery all"
+order += "volume master"
+order += "tztime local"
+
+
+wireless _first_ {
+        format_up = "📶: (%quality at %essid) %ip"
+        format_down = "📶: down"
+}
+
+ethernet _first_ {
+        # if you use %speed, i3status requires root privileges
+        format_up = "🖧: %ip (%speed)"
+        format_down = "🖧: down"
+}
+
+battery all {
+        format = "🔋: %status %percentage %remaining"
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
+cpu_usage {
+		format = "🖥: %usage"
+}
+
+load {
+        format = "%1min"
+}
+
+disk "/" {
+        format = "/(%percentage_used;%avail)"
+}
+
+disk "/home" {
+        format = "/home(%percentage_used;%avail)"
+}
+
+volume headphones {
+	   format = "♪: %volume"
+	   format_muted = "♪: muted (%volume)"
+     device = "alsa_output.pci-0000_00_1f.3.analog-stereo"
+}
+
+volume speakers {
+	   format = "♪: %volume"
+	   format_muted = "♪: muted (%volume)"
+     device = "alsa_output.pci-0000_00_1f.3.analog-stereo"
+}
+
+hamster {
+		format = "{current}"
+}
+
+#apt_updates {
+#		format = "{apt}"
+#}
+
+external_script {
+	format = "🐹: {output}"
+	script_path = "~/scripts/hamster_current.sh"
+}
+
+#coin_market {
+#	format_coin = "{name} ${price_usd}"
+#}
