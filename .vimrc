@@ -73,8 +73,8 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>t :YcmCompleter GetType<CR>
 nnoremap <leader>d :YcmCompleter GetDoc<CR>
 
-if isdirectory("~/.vim/site_specific")
-  if filereadable("~/.vim/site_specific/.site_vimrc")
+if isdirectory($HOME . "/.vim/site_specific")
+  if filereadable($HOME . "/.vim/site_specific/.site_vimrc")
     source ~/.vim/site_specific/.site_vimrc
   endif
 endif
