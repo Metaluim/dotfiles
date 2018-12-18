@@ -8,14 +8,14 @@ call vundle#begin()
 
 " put plugins here...
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline/vim-airline'
 "Plugin 'rust-lang/rust.vim'
 Plugin 'noah/vim256-color'
 Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
-filetype plugin indent on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -44,7 +44,35 @@ let g:ycm_confirm_extra_conf = 0
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-filetype on
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" vim-airline settings
+"
+let g:airline#extensions#tabline#enabled = 1
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" syntastic settings
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" javacsript linter
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+filetype plugin indent on
 syntax enable
 syntax on
 set ruler
@@ -57,16 +85,23 @@ set t_Co=256
 colorscheme jellybeans
 set cursorline
 
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+set undoreload=10000
+
+set hidden
+
 set nu
-set ts=2
-set sw=2
-set backspace=2
-set softtabstop=2
-"set smartindent
-"set cindent
-"set cinoptions=g0:0t0c2C1(0f0l1
+autocmd filetype cpp set ts=2 sw=2 backspace=2 softtabstop=2
+autocmd filetype javascript set ts=4 sw=4 softtabstop=4
 set expandtab
 
+map <C-n> :NERDTreeToggle<CR>
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
+let mapleader = ","
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
