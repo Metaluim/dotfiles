@@ -30,6 +30,10 @@ font pango:ProggyCleanTTSZ Nerd Font 12
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
+#
+
+# compton config
+#exec --no-startup-id /usr/bin/compton
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -315,6 +319,6 @@ for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $heigh
 #for_window [class=(?i)termite] border pixel 3
 assign [class="(?i)firefox"]      $ws1
 assign [class="(?i)thunderbird"]  $ws2
-assign [class="(?i)qtcreator"]    $ws3
+#assign [class="(?i)termite"]          $ws3
 assign [class="(?i)spotify"]      $ws5
 

@@ -46,3 +46,16 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# configuring fzf keybindings
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+bind -x '"\C-p": vim $(fzf);'
+
+#
+# Timezone
+#
+export TZ="Europe/Lisbon"
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
