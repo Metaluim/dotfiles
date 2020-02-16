@@ -184,8 +184,8 @@ workspace $ws1 gaps inner 0
 workspace $ws1 gaps outer 0
 workspace $ws2 gaps inner 0
 workspace $ws2 gaps outer 0
-workspace $ws3 gaps inner 0
-workspace $ws3 gaps outer 0
+#workspace $ws3 gaps inner 0
+#workspace $ws3 gaps outer 0
 
 #set_from_resource $darkred     color1  #000000
 #set_from_resource $red         color9  #000000

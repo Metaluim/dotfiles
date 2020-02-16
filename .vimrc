@@ -21,6 +21,10 @@ Plugin 'tyru/current-func-info.vim'
 Plugin 'Tagbar'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'dominikduda/vim_current_word'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'tommcdo/vim-kangaroo'
 
 call vundle#end()
 "
@@ -44,6 +48,7 @@ set tags=./tags;/
 set t_Co=256
 colorscheme jellybeans
 set cursorline
+highlight ColorColumn ctermbg=black
 
 set undofile
 set undodir=$HOME/.vim/undo
@@ -53,8 +58,6 @@ set undoreload=10000
 set hidden
 
 set nu
-autocmd filetype cpp set ts=2 sw=2 backspace=2 softtabstop=2
-autocmd filetype javascript set ts=4 sw=4 softtabstop=4
 set expandtab
 
 map <C-n> :NERDTreeToggle<CR>
@@ -137,9 +140,9 @@ let g:airline#extensions#tagbar#flags = ''
 " fzf settings
 "
 let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-  \ -g "*.{cpp,cc,h,C,cxx,H,hxx,hpp,c}"
-  \ -g "!{.git,node_modules,vendor,compile_commands.*}/*" '
+      \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+      \ -g "*.{cpp,cc,h,C,cxx,H,hxx,hpp,c,java}"
+      \ -g "!{.git,node_modules,vendor,compile_commands.*}/*" '
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 nnoremap K :F <CR>expand(<cword>)<CR>
 nnoremap K :call fzf#vim#grep(g:rg_command . ' -w ' . expand('<cword>'), 1, 0)<CR>
