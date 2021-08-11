@@ -25,6 +25,8 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tommcdo/vim-kangaroo'
+Plugin 'powerman/vim-plugin-ansiesc'
+Plugin 'neoclide/coc.nvim'
 
 call vundle#end()
 "
@@ -56,6 +58,9 @@ set undolevels=1000
 set undoreload=10000
 
 set hidden
+
+set encoding=utf-8
+set secure exrc
 
 set nu
 set expandtab
@@ -100,12 +105,11 @@ nnoremap <C-k> :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" YCM settings
+" CoC settings
 "
-let g:ycm_confirm_extra_conf = 0
-nnoremap <leader>C :YcmForceCompileAndDiagnostics<CR>
-nnoremap <leader>D :YcmDiags<CR>
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <silent><expr> <c-@> coc#refresh()
+nnoremap <leader>D :CocList diagnostics<CR>
+nnoremap <leader>gl coc-definition<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoTo<CR>
 nnoremap <leader>t :YcmCompleter GetType<CR>
@@ -139,6 +143,9 @@ let g:airline#extensions#tagbar#flags = ''
 "
 " fzf settings
 "
+"source ~/.fzf/plugin/fzf.vim
+"source ~/source/fzf_vim_plugin/plugin/fzf.vim
+let g:fzf_layout = { 'down': '30%' }
 let g:rg_command = '
       \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
       \ -g "*.{cpp,cc,h,C,cxx,H,hxx,hpp,c,java}"
